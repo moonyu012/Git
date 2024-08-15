@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+</head>
+<body>
+    <h1>User List</h1>
+    <ul>
+        {% for user in users %}
+        <li>
+            {{ user.name }} ({{ user.username }})
+            <a href="/edit/{{ user.username }}">Edit</a> <!-- 데이터를 불러오고 반복되는 데이터를 담음-->
+            <a href="/delete/{{ user.username }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/add">Add User</a>
+</body>
+</html>
