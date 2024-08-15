@@ -14,14 +14,17 @@ html = req.text
 
 soup = BeautifulSoup(html,"html.parser")
 
+# lst_all = soup.find_all(class_=["lst50", "lst100"])
+# lst_all = soup.select(".lst50, .lst100")
+
 # wraps = soup.select(".lst50") + soup.select(".lst100")
 
 
 for wrap in soup.select('tr[data-song-no]'):
     rank = wrap.select_one(".rank").text  # 순위
     title = wrap.select_one(".ellipsis.rank01 a").text  # 제목
-    artist = wrap.select_one(".ellipsis.rank02").text  # 가수
-    album = wrap.select_one(".ellipsis.rank03").text  # 앨범
+    artist = wrap.select_one(".ellipsis.rank02 a").text  # 가수
+    album = wrap.select_one(".ellipsis.rank03 a").text  # 앨범
     
     print(f"[{rank}]")
     print(f"제목 : {title}")
